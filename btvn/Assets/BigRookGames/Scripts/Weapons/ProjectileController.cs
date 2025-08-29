@@ -25,7 +25,13 @@ namespace BigRookGames.Weapons
         // --- VFX ---
         public ParticleSystem disableOnHit;
 
+        // --- Force Zone ---
+        public float forceZoneRadius = 10f;
 
+        // -- bulletLoad --
+        public int maxBullets = 10;
+        public int currentBullets = 10;
+        public bool canShoot = true;
         private void Update()
         {
             // --- Check to see if the target has been hit. We don't want to update the position if the target was hit ---
@@ -50,7 +56,7 @@ namespace BigRookGames.Weapons
             projectileMesh.enabled = false;
             targetHit = true;
             inFlightAudioSource.Stop();
-            foreach(Collider col in GetComponents<Collider>())
+            foreach (Collider col in GetComponents<Collider>())
             {
                 col.enabled = false;
             }
@@ -69,8 +75,36 @@ namespace BigRookGames.Weapons
         {
             // --- Instantiate new explosion option. I would recommend using an object pool ---
             GameObject newExplosion = Instantiate(rocketExplosion, transform.position, rocketExplosion.transform.rotation, null);
+            addForce();
+        }
+        private void addForce()
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, forceZoneRadius);
+            foreach (Collider col in colliders)
+            {
+                if (col.attachedRigidbody != null)
+                {
+                    col.attachedRigidbody.AddExplosionForce(500f, transform.position, forceZoneRadius);
+                }
+            }
+        }
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, forceZoneRadius);
+        }
 
-
+        private void bulletsLoad()
+        {
+            if(currentBullets==0 && canShoot==true)
+            {
+                canShoot = false;
+            }
+            if(Input.GetKey(KeyCode.Space))
+            { 
+                currentBullets = maxBullets;
+                canShoot = true;
+            }
         }
     }
 }

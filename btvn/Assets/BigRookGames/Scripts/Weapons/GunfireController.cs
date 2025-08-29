@@ -36,31 +36,38 @@ namespace BigRookGames.Weapons
         // --- Timing ---
         [SerializeField] private float timeLastFired;
 
+        // -- bulletLoad --
+        public int maxBullets = 10;
+        public int currentBullets = 10;
+        public bool canShoot = true;
+        public bool reloading = false;
+
 
         private void Start()
         {
-            if(source != null) source.clip = GunShotClip;
+            if (source != null) source.clip = GunShotClip;
             timeLastFired = 0;
             lastScopeState = scopeActive;
         }
 
         private void Update()
         {
+            buletCounting();
             // --- If rotate is set to true, rotate the weapon in scene ---
             if (rotate)
             {
-                transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y 
+                transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y
                                                                         + rotationSpeed, transform.localEulerAngles.z);
             }
 
             // --- Fires the weapon if the delay time period has passed since the last shot ---
-            if (autoFire && ((timeLastFired + shotDelay) <= Time.time))
+            if (autoFire && ((timeLastFired + shotDelay) <= Time.time)&&!reloading&&canShoot)
             {
                 FireWeapon();
             }
 
             // --- Toggle scope based on public variable value ---
-            if(scope && lastScopeState != scopeActive)
+            if (scope && lastScopeState != scopeActive)
             {
                 lastScopeState = scopeActive;
                 scope.SetActive(scopeActive);
@@ -83,7 +90,7 @@ namespace BigRookGames.Weapons
             // --- Shoot Projectile Object ---
             if (projectilePrefab != null)
             {
-                GameObject newProjectile = Instantiate(projectilePrefab, muzzlePosition.transform.position, muzzlePosition.transform.rotation, transform);
+                GameObject newProjectile = Instantiate(projectilePrefab, muzzlePosition.transform.position, muzzlePosition.transform.rotation);
             }
 
             // --- Disable any gameobjects, if needed ---
@@ -99,7 +106,7 @@ namespace BigRookGames.Weapons
                 // --- Sometimes the source is not attached to the weapon for easy instantiation on quick firing weapons like machineguns, 
                 // so that each shot gets its own audio source, but sometimes it's fine to use just 1 source. We don't want to instantiate 
                 // the parent gameobject or the program will get stuck in a loop, so we check to see if the source is a child object ---
-                if(source.transform.IsChildOf(transform))
+                if (source.transform.IsChildOf(transform))
                 {
                     source.Play();
                 }
@@ -121,7 +128,7 @@ namespace BigRookGames.Weapons
                     }
                 }
             }
-
+            currentBullets -= 1;
             // --- Insert custom code here to shoot projectile or hitscan from weapon ---
 
         }
@@ -130,6 +137,27 @@ namespace BigRookGames.Weapons
         {
             reloadSource.Play();
             projectileToDisableOnFire.SetActive(true);
+        }
+        private void bulletsLoad()
+        {
+            currentBullets = maxBullets;
+            reloading = false;
+        }
+        private void buletCounting()
+        {
+            if (currentBullets == 0 && canShoot == true)
+            {
+                canShoot = false;
+            }
+            else if (currentBullets > 0 && canShoot == false)
+            {
+                canShoot = true;
+            }
+            if (Input.GetKey(KeyCode.Space) && currentBullets < maxBullets)
+            {
+                reloading = true;
+                Invoke("bulletsLoad", 2);
+            }
         }
     }
 }
