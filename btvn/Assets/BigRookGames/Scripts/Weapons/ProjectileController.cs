@@ -28,10 +28,7 @@ namespace BigRookGames.Weapons
         // --- Force Zone ---
         public float forceZoneRadius = 10f;
 
-        // -- bulletLoad --
-        public int maxBullets = 10;
-        public int currentBullets = 10;
-        public bool canShoot = true;
+       
         private void Update()
         {
             // --- Check to see if the target has been hit. We don't want to update the position if the target was hit ---
@@ -94,17 +91,6 @@ namespace BigRookGames.Weapons
             Gizmos.DrawWireSphere(transform.position, forceZoneRadius);
         }
 
-        private void bulletsLoad()
-        {
-            if(currentBullets==0 && canShoot==true)
-            {
-                canShoot = false;
-            }
-            if(Input.GetKey(KeyCode.Space))
-            { 
-                currentBullets = maxBullets;
-                canShoot = true;
-            }
-        }
+        
     }
 }

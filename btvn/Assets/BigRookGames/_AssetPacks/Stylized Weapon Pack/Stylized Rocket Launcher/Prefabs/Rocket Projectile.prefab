@@ -190,6 +190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 323248439922596483}
+  - component: {fileID: 7266319542069326893}
   - component: {fileID: 988175382482574601}
   - component: {fileID: 91128310120046435}
   - component: {fileID: 7870026953430193671}
@@ -216,7 +217,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &988175382482574601
+--- !u!114 &7266319542069326893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,6 +225,19 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4092872357349286730}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ea2e74e474d9848ae8221b62a11c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionEffect: {fileID: 1764654978243476, guid: a98b15aa948478849b54661e4d9a317e, type: 3}
+--- !u!114 &988175382482574601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4092872357349286730}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f84d8719e40fbf1469ae5d0cf8f9903e, type: 3}
   m_Name: 
@@ -236,6 +250,7 @@ MonoBehaviour:
   projectileMesh: {fileID: 7375337548765109680}
   inFlightAudioSource: {fileID: 136168842684345051}
   disableOnHit: {fileID: 4361980691020798282}
+  forceZoneRadius: 10
 --- !u!54 &91128310120046435
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -244,13 +259,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4092872357349286730}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 0.0000001
   m_Drag: 0
-  m_AngularDrag: 100
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 14
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &7870026953430193671
 SphereCollider:
