@@ -156,6 +156,8 @@ GameObject:
   - component: {fileID: 3826672958807468583}
   - component: {fileID: 195002086415459714}
   - component: {fileID: 2688717235866833224}
+  - component: {fileID: -1818113292640124083}
+  - component: {fileID: -4437385722983386496}
   - component: {fileID: 3643882369342148042}
   - component: {fileID: 4490302565791019162}
   - component: {fileID: 2205214468985690845}
@@ -234,6 +236,44 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-1818113292640124083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4490302565791019165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7acf44f5ee057af4cb915d2fc6d34a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzleImage: {fileID: 0}
+  duration: 0
+--- !u!114 &-4437385722983386496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4490302565791019165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1d2cdef34f8ea4e853a3dc0dc12d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  rpm: 0
+  shootSound: {fileID: 0}
+  hitMarkerPrefab: {fileID: 0}
+  aimingCamera: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  onShoot:
+    m_PersistentCalls:
+      m_Calls: []
+  distance: 0
 --- !u!114 &3643882369342148042
 MonoBehaviour:
   m_ObjectHideFlags: 0

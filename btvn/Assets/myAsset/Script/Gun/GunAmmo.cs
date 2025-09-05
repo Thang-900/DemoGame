@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class GunAmmo : MonoBehaviour
 {
     public int magSize;
-    public grenadeLaunch gun;
+    public GrenadeLaunch gun;
     public Animator anim; // không có
     public AudioSource[] reloadSounds;  // không có
     public UnityEvent loadedAmmoChanged;

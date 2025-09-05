@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyExplosion : MonoBehaviour
+public class FakeEven : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int liftime = 5;
     void Start()
     {
-        Destroy(gameObject, liftime);
+        
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

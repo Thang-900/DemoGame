@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class grenadeBullet : MonoBehaviour
+public class GrenadeBullet : MonoBehaviour
 {
     public GameObject explosionEffect;
     public float explosionRadius = 5f;

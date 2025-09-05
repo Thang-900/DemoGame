@@ -20,7 +20,7 @@ public class RotateByMouse : MonoBehaviour
     void UpdateYaw()
     {
         float mouseX=Input.GetAxis("Mouse X");
-        float yaw=mouseX*anglePerSecond*Time.deltaTime;
+        float yaw=mouseX*anglePerSecond*Time.deltaTime*2;
         transform.Rotate(0, yaw, 0);
     }
     void updatePitch()

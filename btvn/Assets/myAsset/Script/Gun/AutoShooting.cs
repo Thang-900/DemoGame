@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AutomaticShooting : MonoBehaviour
+public class AutoShooting : MonoBehaviour
 {
     public Animator anim;
     public int rpm;
@@ -12,7 +12,7 @@ public class AutomaticShooting : MonoBehaviour
     public Camera aimingCamera;
     public LayerMask layerMask;
     public UnityEvent onShoot;
-
+    public float distance;
     private float lastShoot;
     private float interval;
 
@@ -22,14 +22,14 @@ public class AutomaticShooting : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             UpdateFiring();
         }
     }
     private void UpdateFiring()
     {
-        if(Time.time-lastShoot>=interval)
+        if (Time.time - lastShoot >= interval)
         {
             Shoot();
             lastShoot = Time.time;
@@ -43,13 +43,18 @@ public class AutomaticShooting : MonoBehaviour
     }
     private void PerformRayCasting()
     {
-        Ray aimingRay=new Ray(aimingCamera.transform.position
-            ,aimingCamera.transform.forward);
-        if(Physics.Raycast(aimingRay,out RaycastHit hitInfo,1000f,layerMask))
+        Ray aimingRay = new Ray(aimingCamera.transform.position
+            , aimingCamera.transform.forward);
+        if (Physics.Raycast(aimingRay, out RaycastHit hitInfo, 1000f, layerMask))
         {
             Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
             Instantiate(hitMarkerPrefab, hitInfo.point,
                 effectRotation);
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(aimingCamera.transform.position, aimingCamera.transform.position + aimingCamera.transform.forward * distance);
     }
 }

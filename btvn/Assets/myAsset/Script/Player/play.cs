@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class play : MonoBehaviour
+public class Play : MonoBehaviour
 {
     public float speed = 5f;                 // tốc độ di chuyển
     public float mouseSensitivity = 100f;    // độ nhạy chuột
