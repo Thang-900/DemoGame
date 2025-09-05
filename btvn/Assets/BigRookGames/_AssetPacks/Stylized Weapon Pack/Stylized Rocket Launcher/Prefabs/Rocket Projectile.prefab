@@ -230,6 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 1764654978243476, guid: a98b15aa948478849b54661e4d9a317e, type: 3}
+  explosionRadius: 3
+  explosionForce: 11
 --- !u!114 &988175382482574601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +268,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!135 &7870026953430193671
 SphereCollider:
   m_ObjectHideFlags: 0
