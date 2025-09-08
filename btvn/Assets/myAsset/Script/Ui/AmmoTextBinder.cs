@@ -8,7 +8,7 @@ public class AmmoTextBinder : MonoBehaviour
     public TMP_Text loadedAmmoText;
     public GunAmmo gunAmmo;
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
         gunAmmo.loadedAmmoChanged.AddListener(UpdateGunAmmo);
         UpdateGunAmmo();

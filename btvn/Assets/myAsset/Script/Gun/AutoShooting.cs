@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AutoShooting : MonoBehaviour
+public class AutoShooting : Shooting
 {
     public Animator anim;
     public int rpm;
@@ -13,6 +13,8 @@ public class AutoShooting : MonoBehaviour
     public LayerMask layerMask;
     public UnityEvent onShoot;
     public float distance;
+    public int damage;
+
     private float lastShoot;
     private float interval;
 
@@ -40,6 +42,7 @@ public class AutoShooting : MonoBehaviour
         shootSound.Play();
         PerformRayCasting();
         onShoot.Invoke();
+        
     }
     private void PerformRayCasting()
     {
@@ -50,11 +53,20 @@ public class AutoShooting : MonoBehaviour
             Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
             Instantiate(hitMarkerPrefab, hitInfo.point,
                 effectRotation);
+            DeliveryDamage(hitInfo);
         }
     }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawLine(aimingCamera.transform.position, aimingCamera.transform.position + aimingCamera.transform.forward * distance);
+    }
+    private void DeliveryDamage(RaycastHit hitInfo)
+    {
+        Health health = hitInfo.collider.GetComponent<Health>();
+        if(health != null)
+        {
+            health.takeDamage(damage);
+        }
     }
 }

@@ -20,7 +20,7 @@ public class GunMuzzle : MonoBehaviour
         CancelInvoke();
         Invoke(nameof(HideMuzzle), duration);
     }
-    private void HideMuzzle()
+    public void HideMuzzle()
     {
         muzzleImage.gameObject.SetActive(false);
     }
