@@ -63,7 +63,7 @@ public class AutoShooting : Shooting
     }
     private void DeliveryDamage(RaycastHit hitInfo)
     {
-        Health health = hitInfo.collider.GetComponent<Health>();
+        Health health = hitInfo.collider.GetComponentInParent<Health>();
         if(health != null)
         {
             health.takeDamage(damage);
