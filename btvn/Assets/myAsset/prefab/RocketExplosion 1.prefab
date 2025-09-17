@@ -29352,7 +29352,7 @@ GameObject:
   - component: {fileID: 199272095555634792}
   - component: {fileID: 169261439359229380}
   m_Layer: 0
-  m_Name: RocketExplosion
+  m_Name: RocketExplosion 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29583,7 +29583,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 0.84466743, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

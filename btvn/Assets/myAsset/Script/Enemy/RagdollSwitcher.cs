@@ -1,9 +1,11 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RagdollSwitcher : MonoBehaviour
 {
+    public Animator anim;
     public Rigidbody[] rigids;
     [ContextMenu("Retrieve rigidbody")]
     private void RetrieveRigitbodies()
@@ -14,12 +16,12 @@ public class RagdollSwitcher : MonoBehaviour
     private void ClearRagdoll()
     {
         CharacterJoint[] joints = GetComponentsInChildren<CharacterJoint>();
-        for (int i=0;i<joints.Length;i++)
+        for (int i = 0; i < joints.Length; i++)
         {
             DestroyImmediate(joints[i]);
         }
         Rigidbody[] rigidList = GetComponentsInChildren<Rigidbody>();
-        foreach(var body in rigidList)
+        foreach (var body in rigidList)
         {
             DestroyImmediate(body);
         }
@@ -28,20 +30,37 @@ public class RagdollSwitcher : MonoBehaviour
         {
             DestroyImmediate(coll);
         }
-        
+
     }
-    [ContextMenu("Enable Ragdoll")]
     [ContextMenu("Disable Ragdoll")]
     public void DisableRagDoll()
     {
-        SetRagdoll(true);
+        SetRagDoll(false);
     }
-    public void SetRagdoll(bool ragdollEnable)
+    [ContextMenu("Enable Ragdoll")]
+    public void EnsableRagdoll()
     {
-        foreach(var rigid in rigids)
+        SetRagDoll(true);
+    }
+    private void SetRagDoll(bool ragDollEnable)
+    {
+        anim.enabled = !ragDollEnable;
+        foreach (var rigid in rigids)
         {
-            rigid.isKinematic = !ragdollEnable;
+            rigid.isKinematic = !ragDollEnable;
         }
     }
-
+    [ContextMenu("add HitSurface")]
+    private void AddHitSurface()
+    {
+        Collider[] colliders= GetComponentsInChildren<Collider>();
+        foreach(var coll in colliders)
+        {
+            if(gameObject.GetComponent<HitSurface>()==null)
+            {
+                var hitSurface=coll.gameObject.AddComponent<HitSurface>();
+                hitSurface.surfaceType=HitSurFaceType.Blood;
+            }
+        }
+    }
 }
