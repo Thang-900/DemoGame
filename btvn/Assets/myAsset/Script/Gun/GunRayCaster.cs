@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunRayCaster : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject hitMarkerPrefab;
+    //public GameObject hitMarkerPrefab;
     public Camera aimingCamera;
     public LayerMask layerMask;
     public int damage;
@@ -15,10 +15,22 @@ public class GunRayCaster : MonoBehaviour
            , aimingCamera.transform.forward);
         if (Physics.Raycast(aimingRay, out RaycastHit hitInfo, 1000f, layerMask))
         {
-            Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
-            Instantiate(hitMarkerPrefab, hitInfo.point,
-                effectRotation);
+            ShowHitEffect(hitInfo);
             DeliveryDamage(hitInfo);
+        }
+    }
+    private void ShowHitEffect(RaycastHit hitInfo)
+    {
+        HitSurface hitSurface = hitInfo.collider.GetComponent<HitSurface>();
+        if (hitSurface != null)
+        {
+            Debug.Log("Hit surface type: " + hitSurface.surfaceType);
+            GameObject effectPrefab = HitEffectManager.Instance.GetEffectPrefab(hitSurface.surfaceType);
+            if (effectPrefab != null)
+            {
+                Quaternion effectRotation=Quaternion.LookRotation(hitInfo.normal);
+                Instantiate(effectPrefab, hitInfo.point, effectRotation);
+            }
         }
     }
     private void DeliveryDamage(RaycastHit hitInfo)
@@ -29,5 +41,6 @@ public class GunRayCaster : MonoBehaviour
             health.takeDamage(damage);
         }
     }
+
 }
 

@@ -8,7 +8,7 @@ public class AutoShooting : Shooting
     public Animator anim;
     public int rpm;
     public AudioSource shootSound;
-    public GameObject hitMarkerPrefab;
+    //public GameObject hitMarkerPrefab;
     public Camera aimingCamera;
     public LayerMask layerMask;
     public UnityEvent onShoot;
@@ -40,33 +40,32 @@ public class AutoShooting : Shooting
     private void Shoot()
     {
         shootSound.Play();
-        PerformRayCasting();
         onShoot.Invoke();
         
     }
-    private void PerformRayCasting()
-    {
-        Ray aimingRay = new Ray(aimingCamera.transform.position
-            , aimingCamera.transform.forward);
-        if (Physics.Raycast(aimingRay, out RaycastHit hitInfo, 1000f, layerMask))
-        {
-            Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
-            Instantiate(hitMarkerPrefab, hitInfo.point,
-                effectRotation);
-            DeliveryDamage(hitInfo);
-        }
-    }
+    //private void PerformRayCasting()
+    //{
+    //    Ray aimingRay = new Ray(aimingCamera.transform.position
+    //        , aimingCamera.transform.forward);
+    //    if (Physics.Raycast(aimingRay, out RaycastHit hitInfo, 1000f, layerMask))
+    //    {
+    //        Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
+    //        Instantiate(hitMarkerPrefab, hitInfo.point,
+    //            effectRotation);
+    //        DeliveryDamage(hitInfo);
+    //    }
+    //}
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawLine(aimingCamera.transform.position, aimingCamera.transform.position + aimingCamera.transform.forward * distance);
     }
-    private void DeliveryDamage(RaycastHit hitInfo)
-    {
-        Health health = hitInfo.collider.GetComponentInParent<Health>();
-        if(health != null)
-        {
-            health.takeDamage(damage);
-        }
-    }
+    //private void DeliveryDamage(RaycastHit hitInfo)
+    //{
+    //    Health health = hitInfo.collider.GetComponentInParent<Health>();
+    //    if(health != null)
+    //    {
+    //        health.takeDamage(damage);
+    //    }
+    //}
 }
