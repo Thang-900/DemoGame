@@ -2194,7 +2194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
       propertyPath: onShoot.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
       propertyPath: endShoot.m_PersistentCalls.m_Calls.Array.size
@@ -2202,6 +2202,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
       propertyPath: onShoot.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
+      propertyPath: onShoot.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
@@ -2213,11 +2217,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 712224534}
     - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
+      propertyPath: onShoot.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 712224542}
+    - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
       propertyPath: endShoot.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 712224534}
     - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
       propertyPath: onShoot.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
+      propertyPath: onShoot.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
@@ -2229,6 +2241,10 @@ PrefabInstance:
       value: ShowMuzzle
       objectReference: {fileID: 0}
     - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
+      propertyPath: onShoot.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PerformRayCasting
+      objectReference: {fileID: 0}
+    - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
       propertyPath: endShoot.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: HideMuzzle
       objectReference: {fileID: 0}
@@ -2237,11 +2253,19 @@ PrefabInstance:
       value: GunMuzzle, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
+      propertyPath: onShoot.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GunRayCaster, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
       propertyPath: endShoot.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GunMuzzle, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
       propertyPath: onShoot.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
+      propertyPath: onShoot.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: -4437385722983386496, guid: f26add0b8561051438426890f3bd0f19, type: 3}
