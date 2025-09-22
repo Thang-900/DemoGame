@@ -22,7 +22,7 @@ public class ZombieMovement : MonoBehaviour
         private set
         {
             if ((_isMovingValue == value)) return;
-            _isMovingValue = false;
+            _isMovingValue = value;
             OnIsMovingValueChange();
         }
     }
