@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     public int maxHealthPoint;
-    public Animator anim;
     private int healthPoint;
     public UnityEvent onDie; 
     private bool isdead => healthPoint <= 0;
@@ -20,12 +19,12 @@ public class Health : MonoBehaviour
         healthPoint -= damage;
         if (isdead)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
     private void Die()
     {
-        anim.SetTrigger("Die");
+        
         onDie.Invoke();
     }
 }
